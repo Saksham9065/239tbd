@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://saksham884073:Saksham%402026@cluster0.ibj2zx9.mongodb.net/239db?retryWrites=true&w=majority&appName=Cluster0";
+// 1. Always use process.env for sensitive credentials
+const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  throw new Error('Please define the MONGODB_URI environment variable in Vercel Settings');
 }
 
-// Interface to define the structure of our cached connection
 interface GlobalWithMongoose {
   mongoose?: {
     conn: typeof mongoose | null;
@@ -15,24 +15,25 @@ interface GlobalWithMongoose {
 }
 
 const globalWithMongoose = global as GlobalWithMongoose;
+let cached = globalWithMongoose.mongoose;
 
-// Initialize the cache if it doesn't exist
-const cached = globalWithMongoose.mongoose || { conn: null, promise: null };
+if (!cached) {
+  cached = globalWithMongoose.mongoose = { conn: null, promise: null };
+}
 
 export async function connectDB() {
-  // Return the existing connection if available
-  if (cached.conn) return cached.conn;
+  if (cached!.conn) return cached!.conn;
 
-  // Create a new promise if one doesn't exist
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongooseInstance) => {
-      return mongooseInstance;
+  if (!cached!.promise) {
+    const opts = {
+      bufferCommands: false,
+    };
+
+    cached!.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
+      return mongoose;
     });
   }
   
-  // Await the promise and store the connection
-  cached.conn = await cached.promise;
-  globalWithMongoose.mongoose = cached; // Persist the cache
-  
-  return cached.conn;
+  cached!.conn = await cached!.promise;
+  return cached!.conn;
 }

@@ -1,0 +1,50 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+export default function D2CCaseStudy() {
+  const stats = [
+    { label: "TOTAL ORDERS", value: "10K+" },
+    { label: "CHANNELS", value: "Multi" },
+    { label: "LAUNCH SPEED", value: "90 Days" },
+    { label: "GROWTH", value: "Rapid" }
+  ];
+
+  return (
+    <main className="min-h-screen bg-[#050505] pt-32 pb-24 text-white">
+      <div className="max-w-4xl mx-auto px-6">
+        
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-16">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9]">
+            D2C Brand <br />
+            <span className="text-[#F97316]">Launch.</span>
+          </h1>
+          <p className="text-gray-400 text-xl leading-relaxed max-w-2xl">
+            Successfully launched and scaled a direct-to-consumer brand across 
+            multiple digital sales channels, driving 10K+ orders in the initial launch phase.
+          </p>
+        </motion.div>
+
+        <div className="w-full border-b border-white/10 mb-12"></div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+          {stats.map((stat, i) => (
+            <div key={i}>
+              <div className="text-[#F97316] text-3xl md:text-4xl font-bold mb-2">{stat.value}</div>
+              <div className="text-gray-500 text-xs font-bold tracking-[0.2em]">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold">The Approach</h2>
+          <p className="text-gray-400 leading-relaxed text-lg">
+            We built a scalable D2C architecture from the ground up, integrating unified 
+            inventory management, high-conversion checkout flows, and cross-channel 
+            marketing to capture early-adopter market share.
+          </p>
+        </div>
+      </div>
+    </main>
+  );
+}

@@ -38,7 +38,7 @@ export default function AnalyticsStrategy() {
           ))}
         </div>
 
-        <div className="bg-[#1A1F26] p-12 rounded-[2rem] border border-white/5 text-center">
+        <div className="bg-[#1A1F26] p-12 rounded-4xl border border-white/5 text-center">
           <h2 className="text-3xl font-bold mb-4">Make data-backed decisions.</h2>
           <p className="text-gray-400 mb-8 max-w-lg mx-auto">Stop guessing. Let&apos;s analyze your current metrics and build a growth roadmap.</p>
           <a href="/inquiry" className="bg-[#F97316] text-white font-bold py-4 px-10 rounded-lg hover:bg-orange-600 transition-all">

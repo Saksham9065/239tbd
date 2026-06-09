@@ -56,7 +56,7 @@ export default function MarketplaceAdvertising() {
               <li>• Conversion-focused landing page optimization.</li>
             </ul>
           </div>
-          <div className="bg-[#1A1F26] p-10 rounded-[2rem] border border-white/5">
+          <div className="bg-[#1A1F26] p-10 rounded-4xl border border-white/5">
             <h3 className="text-2xl font-bold mb-4 text-[#F97316]">Ready to scale?</h3>
             <p className="text-gray-300 mb-8">Let’s audit your current marketplace advertising performance.</p>
             <a href="/inquiry" className="inline-block bg-[#F97316] text-white font-bold py-4 px-8 rounded-lg hover:bg-orange-600 transition-all">

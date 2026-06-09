@@ -25,7 +25,7 @@ export default function ServicePage() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="bg-[#0F1218] p-10 rounded-[2rem] border border-white/5">
+          <div className="bg-[#0F1218] p-10 rounded-4xl border border-white/5">
             <h3 className="text-2xl font-bold mb-6 text-[#F97316]">Core Focus Areas</h3>
             <ul className="space-y-4">
               {benefits.map((b, i) => (

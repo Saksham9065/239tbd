@@ -38,7 +38,7 @@ export default function EcommerceDevelopment() {
           ))}
         </div>
 
-        <div className="bg-[#1A1F26] p-12 rounded-[2rem] border border-white/5 text-center">
+        <div className="bg-[#1A1F26] p-12 rounded-4xl border border-white/5 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to build your digital storefront?</h2>
           <p className="text-gray-400 mb-8 max-w-lg mx-auto">Let&apos;s discuss your technical requirements and project timeline.</p>
           <a href="/inquiry" className="bg-[#F97316] text-white font-bold py-4 px-10 rounded-lg hover:bg-orange-600 transition-all">

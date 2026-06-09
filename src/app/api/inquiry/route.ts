@@ -4,8 +4,6 @@ import Inquiry from "@/models/Inquiry";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const inquirySchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
@@ -20,41 +18,55 @@ export async function POST(req: Request) {
     // 1. Validate input
     const validation = inquirySchema.safeParse(body);
     if (!validation.success) {
-      return NextResponse.json({ success: false, error: "Invalid input" }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: "Invalid input" },
+        { status: 400 }
+      );
     }
 
     // 2. Connect Database
     await connectDB();
 
     // 3. Save to MongoDB
-    const newInquiry = await Inquiry.create(body);
+    // Added underscore prefix to satisfy ESLint "unused variable" warning
+    const _newInquiry = await Inquiry.create(body);
 
-    // 4. Send HTML Email
+    // 4. Send HTML Email (Initialized here to avoid build-time errors)
     try {
-      await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-        to: process.env.ADMIN_EMAIL || 'your-email@example.com',
-        subject: `New Inquiry from ${body.name}`,
-        html: `
-          <div style="font-family: sans-serif; line-height: 1.6;">
-            <h2 style="color: #F97316;">New Project Inquiry</h2>
-            <p><strong>Name:</strong> ${body.name}</p>
-            <p><strong>Email:</strong> ${body.email}</p>
-            <p><strong>Services Interested In:</strong> ${body.services.join(", ") || "None"}</p>
-            <p><strong>Message:</strong></p>
-            <p style="background: #f4f4f4; padding: 15px; border-radius: 8px;">${body.message}</p>
-          </div>
-        `,
-      });
+      if (process.env.RESEND_API_KEY) {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+          to: process.env.ADMIN_EMAIL || 'your-email@example.com',
+          subject: `New Inquiry from ${body.name}`,
+          html: `
+            <div style="font-family: sans-serif; line-height: 1.6;">
+              <h2 style="color: #F97316;">New Project Inquiry</h2>
+              <p><strong>Name:</strong> ${body.name}</p>
+              <p><strong>Email:</strong> ${body.email}</p>
+              <p><strong>Services Interested In:</strong> ${body.services.join(", ") || "None"}</p>
+              <p><strong>Message:</strong></p>
+              <p style="background: #f4f4f4; padding: 15px; border-radius: 8px;">${body.message}</p>
+            </div>
+          `,
+        });
+      } else {
+        console.warn("RESEND_API_KEY is missing, skipping email notification.");
+      }
     } catch (emailError) {
       console.error("Email sending failed:", emailError);
-      // We don't fail the request if the email sending specifically fails
     }
 
-    return NextResponse.json({ success: true, message: "Inquiry saved!" }, { status: 201 });
-
+    return NextResponse.json(
+      { success: true, message: "Inquiry saved!" },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("CRITICAL API ERROR:", error);
-    return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

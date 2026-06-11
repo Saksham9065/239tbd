@@ -12,54 +12,68 @@ export default function Footer() {
       />
 
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-
         <div className="grid md:grid-cols-4 gap-12">
 
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <h2 className="text-4xl font-black text-white tracking-tighter">
-              239
-            </h2>
-            <p className="text-[#F97316] uppercase tracking-[0.35em] text-xs font-bold mt-1">
-              The Business Developer LLP
-            </p>
-            <p className="mt-6 max-w-md text-gray-400 leading-relaxed font-light">
-              Powering E-commerce growth through marketplace
-              management, advertising, technology, and strategic
-              growth solutions.
+          {/* Column 1: About Us */}
+          <div>
+            <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+              About Us
+            </h3>
+            <p className="text-gray-400 leading-relaxed font-light text-sm">
+              239 The Business Developers LLP provides end-to-end e-commerce, digital marketing, and technology solutions designed for growth.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Services */}
           <div>
             <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
-              Navigate
+              Services
             </h3>
-            <div className="flex flex-col gap-4">
-              {["About", "Services", "Case Studies", "Contact"].map((link) => (
-                <Link
-                  key={link}
-                  href={`/${link.toLowerCase().replace(" ", "-")}`}
-                  className="text-gray-400 hover:text-[#F97316] transition-colors duration-300"
-                >
-                  {link}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-3 text-sm text-gray-400">
+              <Link href="/services" className="hover:text-[#F97316] transition-colors">E-commerce Management</Link>
+              <Link href="/services" className="hover:text-[#F97316] transition-colors">Digital Marketing</Link>
+              <Link href="/services" className="hover:text-[#F97316] transition-colors">Web Development</Link>
+              <Link href="/services" className="hover:text-[#F97316] transition-colors">App Development</Link>
             </div>
           </div>
 
-          {/* Contact */}
+          {/* Column 3: Quick Links */}
           <div>
             <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
-              Get in Touch
+              Quick Links
             </h3>
-            <div className="space-y-4 text-gray-400">
-              <p className="hover:text-[#F97316] transition-colors cursor-pointer">hello@239commerce.com</p>
-              <p>+91 98765 43210</p>
-              <p>India</p>
+            <div className="flex flex-col gap-3 text-sm text-gray-400">
+              <Link href="/" className="hover:text-[#F97316] transition-colors">Home</Link>
+              <Link href="/about" className="hover:text-[#F97316] transition-colors">About Us</Link>
+              <Link href="/services" className="hover:text-[#F97316] transition-colors">Services</Link>
+              <Link href="/inquiry" className="hover:text-[#F97316] transition-colors">Inquiry</Link>
+              <Link href="/contact" className="hover:text-[#F97316] transition-colors">Contact</Link>
             </div>
           </div>
 
+          {/* Column 4: Get in Touch & Registered Office */}
+          <div className="flex flex-col gap-6">
+            <div>
+              <h3 className="font-bold text-white mb-4 uppercase tracking-wider text-sm">
+                Get in Touch
+              </h3>
+              <div className="text-sm text-gray-400 flex flex-col gap-1">
+                <p>hello@239commerce.com</p>
+                <p>+91 98765 43210</p>
+                <p>India</p>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-bold text-white mb-4 uppercase tracking-wider text-sm">
+                Registered Office
+              </h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                74-75, Arjun Nagar, Durga Pura, <br />
+                Jaipur, Rajasthan, India - 302018.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
@@ -68,7 +82,7 @@ export default function Footer() {
             © 2026 239 Commerce. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="text-sm text-gray-500 hover:text-white transition-colors">
               Privacy Policy
             </Link>
@@ -77,7 +91,6 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

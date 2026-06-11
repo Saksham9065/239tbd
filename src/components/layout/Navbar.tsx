@@ -12,7 +12,6 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   
-  // Use a ref to track if component is mounted to satisfy linter
   const isMounted = useRef(false);
 
   useEffect(() => {
@@ -23,7 +22,7 @@ export default function Navbar() {
       const hasAuth = document.cookie.includes('admin-auth') || document.cookie.includes('user-auth');
       setIsLoggedIn(hasAuth);
     }
-  }, []); // Runs once on mount
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -70,16 +69,23 @@ export default function Navbar() {
             <>
               <Link 
                 href={isLoggedIn ? "/admin" : "/login"} 
-                className="hidden lg:flex items-center px-6 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md hover:bg-[#F97316] hover:border-[#F97316] text-white text-sm font-bold transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.15)]"
+                className="hidden lg:flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-md hover:border-[#F97316] transition-all duration-300"
               >
-                {isLoggedIn ? "Dashboard" : "Login"}
+                <svg 
+                  className="w-5 h-5 text-gray-400 hover:text-[#F97316] transition-colors" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
               </Link>
               <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-white text-2xl z-50">
                 {menuOpen ? "✕" : "☰"}
               </button>
             </>
           ) : (
-            <div className="w-20 lg:w-28" />
+            <div className="w-10 h-10" />
           )}
         </div>
       </div>

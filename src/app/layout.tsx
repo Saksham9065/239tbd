@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { Toaster } from "sonner"; // Import Toaster
 import type { Metadata } from 'next'; 
 import "./globals.css";
 
@@ -15,11 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <body className="min-h-screen bg-[#050505] text-white overflow-x-hidden antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
+        
+        {/* Toast Notification Container */}
+        <Toaster theme="dark" richColors />
       </body>
     </html>
   );

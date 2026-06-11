@@ -1,39 +1,51 @@
+import { MongoClient } from "mongodb";
 import mongoose from 'mongoose';
 
-// 1. Always use process.env for sensitive credentials
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable in Vercel Settings');
+  throw new Error('Invalid/Missing MONGODB_URI');
 }
 
-interface GlobalWithMongoose {
-  mongoose?: {
+// 1. Define types for our global caches
+interface GlobalCache {
+  mongoose: {
     conn: typeof mongoose | null;
     promise: Promise<typeof mongoose> | null;
   };
+  _mongoClientPromise?: Promise<MongoClient>;
 }
 
-const globalWithMongoose = global as GlobalWithMongoose;
-let cached = globalWithMongoose.mongoose;
+const globalWithCache = global as unknown as GlobalCache;
 
-if (!cached) {
-  cached = globalWithMongoose.mongoose = { conn: null, promise: null };
-}
+// 2. Native MongoDB Client (Required by NextAuth)
+let clientPromise: Promise<MongoClient>;
 
-export async function connectDB() {
-  if (cached!.conn) return cached!.conn;
-
-  if (!cached!.promise) {
-    const opts = {
-      bufferCommands: false,
-    };
-
-    cached!.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
-      return mongoose;
-    });
+if (process.env.NODE_ENV === "development") {
+  if (!globalWithCache._mongoClientPromise) {
+    const client = new MongoClient(MONGODB_URI);
+    globalWithCache._mongoClientPromise = client.connect();
   }
-  
-  cached!.conn = await cached!.promise;
-  return cached!.conn;
+  clientPromise = globalWithCache._mongoClientPromise;
+} else {
+  const client = new MongoClient(MONGODB_URI);
+  clientPromise = client.connect();
+}
+
+// 3. Mongoose Cache (Required by your Models)
+const cached = globalWithCache.mongoose || { conn: null, promise: null };
+globalWithCache.mongoose = cached;
+
+// Export the native client for NextAuth
+export default clientPromise;
+
+// Export Mongoose connect for your existing API routes
+export async function connectDB() {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI).then((m) => m);
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
 }

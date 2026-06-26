@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050505] border-t border-white/5 relative overflow-hidden">
-      {/* Background Noise Overlay */}
+    <footer className="bg-white border-t border-gray-200 relative overflow-hidden">
+      {/* Background Noise Overlay (Optional: reduced opacity to be subtle on white) */}
       <div 
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply"
         style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
       />
 
@@ -16,48 +16,48 @@ export default function Footer() {
 
           {/* Column 1: About Us */}
           <div>
-            <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-bold text-black mb-6 uppercase tracking-wider text-sm">
               About Us
             </h3>
-            <p className="text-gray-400 leading-relaxed font-light text-sm">
+            <p className="text-gray-600 leading-relaxed font-light text-sm">
               239 The Business Developers LLP provides end-to-end e-commerce, digital marketing, and technology solutions designed for growth.
             </p>
           </div>
 
           {/* Column 2: Services */}
           <div>
-            <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-bold text-black mb-6 uppercase tracking-wider text-sm">
               Services
             </h3>
-            <div className="flex flex-col gap-3 text-sm text-gray-400">
-              <Link href="/services" className="hover:text-[#F97316] transition-colors">E-commerce Management</Link>
-              <Link href="/services" className="hover:text-[#F97316] transition-colors">Digital Marketing</Link>
-              <Link href="/services" className="hover:text-[#F97316] transition-colors">Web Development</Link>
-              <Link href="/services" className="hover:text-[#F97316] transition-colors">App Development</Link>
+            <div className="flex flex-col gap-3 text-sm text-gray-600">
+              <Link href="/services" className="hover:text-green-600 transition-colors">E-commerce Management</Link>
+              <Link href="/services" className="hover:text-green-600 transition-colors">Digital Marketing</Link>
+              <Link href="/services" className="hover:text-green-600 transition-colors">Web Development</Link>
+              <Link href="/services" className="hover:text-green-600 transition-colors">App Development</Link>
             </div>
           </div>
 
           {/* Column 3: Quick Links */}
           <div>
-            <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-bold text-black mb-6 uppercase tracking-wider text-sm">
               Quick Links
             </h3>
-            <div className="flex flex-col gap-3 text-sm text-gray-400">
-              <Link href="/" className="hover:text-[#F97316] transition-colors">Home</Link>
-              <Link href="/about" className="hover:text-[#F97316] transition-colors">About Us</Link>
-              <Link href="/services" className="hover:text-[#F97316] transition-colors">Services</Link>
-              <Link href="/inquiry" className="hover:text-[#F97316] transition-colors">Inquiry</Link>
-              <Link href="/contact" className="hover:text-[#F97316] transition-colors">Contact</Link>
+            <div className="flex flex-col gap-3 text-sm text-gray-600">
+              <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
+              <Link href="/about" className="hover:text-green-600 transition-colors">About Us</Link>
+              <Link href="/services" className="hover:text-green-600 transition-colors">Services</Link>
+              <Link href="/inquiry" className="hover:text-green-600 transition-colors">Inquiry</Link>
+              <Link href="/contact" className="hover:text-green-600 transition-colors">Contact</Link>
             </div>
           </div>
 
           {/* Column 4: Get in Touch & Registered Office */}
           <div className="flex flex-col gap-6">
             <div>
-              <h3 className="font-bold text-white mb-4 uppercase tracking-wider text-sm">
+              <h3 className="font-bold text-black mb-4 uppercase tracking-wider text-sm">
                 Get in Touch
               </h3>
-              <div className="text-sm text-gray-400 flex flex-col gap-1">
+              <div className="text-sm text-gray-600 flex flex-col gap-1">
                 <p>hello@239commerce.com</p>
                 <p>+91 98765 43210</p>
                 <p>India</p>
@@ -65,10 +65,10 @@ export default function Footer() {
             </div>
             
             <div>
-              <h3 className="font-bold text-white mb-4 uppercase tracking-wider text-sm">
+              <h3 className="font-bold text-black mb-4 uppercase tracking-wider text-sm">
                 Registered Office
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 74-75, Arjun Nagar, Durga Pura, <br />
                 Jaipur, Rajasthan, India - 302018.
               </p>
@@ -77,16 +77,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-20 pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm text-gray-500 font-light">
             © 2026 239 Commerce. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="text-sm text-gray-500 hover:text-white transition-colors">
+            <Link href="/privacy-policy" className="text-sm text-gray-500 hover:text-black transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-sm text-gray-500 hover:text-white transition-colors">
+            <Link href="/terms" className="text-sm text-gray-500 hover:text-black transition-colors">
               Terms of Service
             </Link>
           </div>

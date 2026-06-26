@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 export default function ContactCTA() {
   return (
-    <section className="bg-[#050505] py-32 relative overflow-hidden">
+    <section className="bg-white py-32 relative overflow-hidden">
       {/* Background Noise Overlay */}
       <div 
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply"
         style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
       />
 
@@ -18,7 +18,7 @@ export default function ContactCTA() {
         <motion.span 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="text-[#F97316] uppercase tracking-[0.3em] text-sm font-bold"
+          className="text-[#0c6a22] uppercase tracking-[0.3em] text-sm font-bold"
         >
           Get Started
         </motion.span>
@@ -27,7 +27,7 @@ export default function ContactCTA() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="mt-6 text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter"
+          className="mt-6 text-4xl md:text-5xl lg:text-7xl font-black text-black tracking-tighter"
         >
           Ready To Scale <br /> Your Brand?
         </motion.h2>
@@ -37,7 +37,7 @@ export default function ContactCTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light"
+          className="mt-8 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-light"
         >
           Let&apos;s build your next growth story together and unlock new opportunities across marketplaces, performance marketing, and D2C channels.
         </motion.p>
@@ -56,8 +56,8 @@ export default function ContactCTA() {
               inline-flex 
               items-center 
               justify-center
-              bg-white
-              text-black
+              bg-black
+              text-white
               px-12
               py-5
               text-lg 
@@ -67,11 +67,11 @@ export default function ContactCTA() {
               transition-all 
               duration-500
               hover:scale-105
-              hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]
+              hover:shadow-[0_0_40px_rgba(12,106,34,0.3)]
             ">
-              <div className="absolute inset-0 w-full h-full bg-[#F97316] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1]" />
+              <div className="absolute inset-0 w-full h-full bg-[#0c6a22] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1]" />
               
-              <span className="relative z-10 flex items-center group-hover:text-white transition-colors duration-300">
+              <span className="relative z-10 flex items-center text-white transition-colors duration-300">
                 Start Your Project →
               </span>
             </div>

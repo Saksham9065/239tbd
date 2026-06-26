@@ -1,4 +1,4 @@
-import { SessionProvider } from "@/components/SessionProvider"; // Custom wrapper
+import { SessionProvider } from "@/components/SessionProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
@@ -18,13 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-[#050505] text-white overflow-x-hidden antialiased">
-        {/* Wrap content in SessionProvider */}
+      {/* Changed background to white and text to black */}
+      <body className="min-h-screen bg-white text-black overflow-x-hidden antialiased">
         <SessionProvider>
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <Toaster theme="dark" richColors />
+          {/* Changed theme to light to match your new site aesthetic */}
+          <Toaster theme="light" richColors />
         </SessionProvider>
       </body>
     </html>

@@ -38,8 +38,8 @@ const itemVariants: Variants = {
 
 export default function ServicesGrid() {
   return (
-    <section className="py-24 bg-[#050505] relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay noise-overlay" />
+    <section className="py-24 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="mb-20">
@@ -47,7 +47,7 @@ export default function ServicesGrid() {
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-[#F97316] uppercase tracking-[0.2em] text-sm font-bold block mb-4"
+            className="text-[#0c6a22] uppercase tracking-[0.2em] text-sm font-bold block mb-4"
           >
             Complete Growth Solutions
           </motion.span>
@@ -55,9 +55,9 @@ export default function ServicesGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black tracking-tighter text-white leading-[1.05]"
+            className="text-5xl md:text-6xl font-black tracking-tighter text-black leading-[1.05]"
           >
-            Everything <span className="text-[#F97316]">Under One Roof.</span>
+            Everything <span className="text-[#0c6a22]">Under One Roof.</span>
           </motion.h2>
         </div>
 
@@ -72,21 +72,21 @@ export default function ServicesGrid() {
             <Link key={service.slug} href={`/services/${service.slug}`} className="h-full">
               <motion.div
                 variants={itemVariants}
-                className="group relative bg-white/5 border border-white/5 hover:border-[#F97316]/30 p-10 rounded-4xl transition-all duration-500 hover:bg-white/10 h-full"
+                className="group relative bg-gray-50 border border-gray-200 hover:border-[#0c6a22]/30 p-10 rounded-4xl transition-all duration-500 hover:bg-white hover:shadow-lg h-full"
               >
-                <div className="text-4xl font-black text-white/5 group-hover:text-[#F97316]/20 transition-colors duration-500">
+                <div className="text-4xl font-black text-gray-200 group-hover:text-[#0c6a22]/10 transition-colors duration-500">
                   {service.number}
                 </div>
 
-                <h3 className="mt-6 text-2xl font-bold text-white leading-tight">
+                <h3 className="mt-6 text-2xl font-bold text-black leading-tight">
                   {service.title}
                 </h3>
 
-                <p className="mt-4 text-gray-400 leading-relaxed font-light">
+                <p className="mt-4 text-gray-600 leading-relaxed font-light">
                   {service.description}
                 </p>
 
-                <div className="mt-8 text-[#F97316] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-sm uppercase tracking-widest">
+                <div className="mt-8 text-[#0c6a22] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-sm uppercase tracking-widest">
                   Learn More →
                 </div>
               </motion.div>

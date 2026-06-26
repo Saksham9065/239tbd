@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <main className="min-h-screen pt-40 pb-24 bg-[#050505] relative overflow-hidden">
-      {/* Background Noise Overlay */}
+    <main className="min-h-screen pt-40 pb-24 bg-white relative overflow-hidden">
+      {/* Background Noise Overlay adjusted for white background */}
       <div 
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply"
         style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
       />
 
@@ -18,7 +18,7 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-20"
         >
-          <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter">
+          <h1 className="text-6xl md:text-8xl font-black text-black tracking-tighter">
             Let&apos;s Talk.
           </h1>
         </motion.div>
@@ -29,27 +29,27 @@ export default function Contact() {
             
             {/* Contact Info */}
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white/3 border border-white/5 p-8 rounded-4xl">
-                <h3 className="text-[#F97316] font-bold uppercase tracking-widest text-xs mb-3">Email</h3>
-                <a href="mailto:hello@239tbd.com" className="text-white text-lg font-medium hover:text-[#F97316] transition-colors">hello@239tbd.com</a>
+              <div className="bg-gray-50 border border-gray-200 p-8 rounded-4xl">
+                <h3 className="text-[#0c6a22] font-bold uppercase tracking-widest text-xs mb-3">Email</h3>
+                <a href="mailto:hello@239tbd.com" className="text-black text-lg font-medium hover:text-[#0c6a22] transition-colors">hello@239tbd.com</a>
               </div>
-              <div className="bg-white/3 border border-white/5 p-8 rounded-4xl">
-                <h3 className="text-[#F97316] font-bold uppercase tracking-widest text-xs mb-3">Support</h3>
-                <p className="text-white text-lg font-medium">+91 98765 43210</p>
+              <div className="bg-gray-50 border border-gray-200 p-8 rounded-4xl">
+                <h3 className="text-[#0c6a22] font-bold uppercase tracking-widest text-xs mb-3">Support</h3>
+                <p className="text-black text-lg font-medium">+91 98765 43210</p>
               </div>
             </div>
 
             {/* Registered Office */}
-            <div className="bg-white/3 border border-white/5 p-10 rounded-4xl">
-              <h3 className="text-[#F97316] font-bold uppercase tracking-widest text-xs mb-4">Registered Office</h3>
-              <p className="text-white text-xl leading-relaxed">
+            <div className="bg-gray-50 border border-gray-200 p-10 rounded-4xl">
+              <h3 className="text-[#0c6a22] font-bold uppercase tracking-widest text-xs mb-4">Registered Office</h3>
+              <p className="text-black text-xl leading-relaxed">
                 74-75, Arjun Nagar, Durga Pura,<br />
                 Jaipur, Rajasthan, India - 302018
               </p>
             </div>
 
             {/* Map */}
-            <div className="rounded-4xl overflow-hidden border border-white/5 h-64 w-full">
+            <div className="rounded-4xl overflow-hidden border border-gray-200 h-64 w-full">
               <iframe 
                 src="https://www.google.com/maps/embed" 
                 width="100%" 
@@ -63,22 +63,22 @@ export default function Contact() {
           </div>
 
           {/* Quick CTA */}
-          <div className="bg-white/3 border border-white/5 p-12 rounded-4xl flex flex-col justify-center items-center text-center">
+          <div className="bg-gray-50 border border-gray-200 p-12 rounded-4xl flex flex-col justify-center items-center text-center">
             
             <div className="mb-8">
-              <h3 className="text-[#9A3412] font-black text-6xl tracking-tighter mb-1">
+              <h3 className="text-[#0c6a22]/80 font-black text-6xl tracking-tighter mb-1">
                 239
               </h3>
-              <p className="text-[#F97316] font-bold uppercase tracking-[0.2em] text-xs">
+              <p className="text-[#0c6a22] font-bold uppercase tracking-[0.2em] text-xs">
                 THE BUSINESS DEVELOPERS LLP
               </p>
             </div>
             
-            <h2 className="text-3xl font-black text-white mb-6">Ready to scale?</h2>
-            <p className="text-gray-400 mb-8">We respond to all inquiries within 24 hours.</p>
+            <h2 className="text-3xl font-black text-black mb-6">Ready to scale?</h2>
+            <p className="text-gray-600 mb-8">We respond to all inquiries within 24 hours.</p>
             <a 
               href="/inquiry" 
-              className="bg-[#F97316] text-white px-10 py-5 rounded-full font-bold hover:bg-white hover:text-black transition-all duration-300"
+              className="bg-[#0c6a22] text-white px-10 py-5 rounded-full font-bold hover:bg-[#0a581c] transition-all duration-300"
             >
               Start Your Project →
             </a>

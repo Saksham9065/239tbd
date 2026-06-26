@@ -8,7 +8,8 @@ import ContactCTA from "@/components/sections/ContactCTA";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050505] overflow-x-hidden">
+    // Changed bg-[#050505] to bg-white for a clean light-themed aesthetic
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Navbar removed: handled by RootLayout */}
       
       <main>

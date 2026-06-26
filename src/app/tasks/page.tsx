@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from "sonner"; // 1. Import toast
+import { toast } from "sonner";
 
 interface Task {
   _id: string;
@@ -15,7 +15,6 @@ export default function TasksPage() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Define the fetching logic
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -38,7 +37,7 @@ export default function TasksPage() {
       const res = await axios.post("/api/tasks", { title: input });
       setTasks([...tasks, res.data]);
       setInput("");
-      toast.success("Task added successfully!"); // Added success toast
+      toast.success("Task added successfully!");
     } catch (error) {
       console.error("Error adding task:", error);
       toast.error("Failed to add task");
@@ -49,28 +48,28 @@ export default function TasksPage() {
     try {
       await axios.delete(`/api/tasks/${id}`);
       setTasks(tasks.filter((task) => task._id !== id));
-      toast.success("Task deleted successfully"); // Success toast
+      toast.success("Task deleted successfully");
     } catch (error) {
       console.error("DELETE Task Error:", error);
-      toast.error("Failed to delete task"); // Error toast
+      toast.error("Failed to delete task");
     }
   };
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white p-10">
+    <main className="min-h-screen bg-white text-black p-10">
       <div className="max-w-xl mx-auto">
-        <h1 className="text-4xl font-black mb-8 text-[#F97316]">Task Manager</h1>
+        <h1 className="text-4xl font-black mb-8 text-[#0c6a22]">Task Manager</h1>
         
         <div className="flex gap-4 mb-8">
           <input
-            className="flex-1 bg-white/5 border border-white/10 p-3 rounded-xl outline-none focus:border-[#F97316]"
+            className="flex-1 bg-gray-50 border border-gray-200 p-3 rounded-xl outline-none focus:border-[#0c6a22]"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Add a new task..."
           />
           <button 
             onClick={addTask}
-            className="bg-[#F97316] px-6 py-3 rounded-xl font-bold hover:bg-[#EA580C] transition"
+            className="bg-[#0c6a22] px-6 py-3 rounded-xl font-bold text-white hover:bg-[#0a581c] transition"
           >
             Add
           </button>
@@ -81,11 +80,11 @@ export default function TasksPage() {
         ) : (
           <ul className="space-y-4">
             {tasks.map((task) => (
-              <li key={task._id} className="bg-white/5 p-4 rounded-xl flex justify-between items-center border border-white/5">
-                <span>{task.title}</span>
+              <li key={task._id} className="bg-gray-50 p-4 rounded-xl flex justify-between items-center border border-gray-200">
+                <span className="text-gray-800">{task.title}</span>
                 <button 
                   onClick={() => deleteTask(task._id)}
-                  className="text-red-400 hover:text-red-300 text-sm"
+                  className="text-red-600 hover:text-red-800 text-sm font-bold uppercase"
                 >
                   Delete
                 </button>

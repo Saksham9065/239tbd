@@ -39,7 +39,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 bg-[#050505] text-white">
+    <section className="py-24 bg-white text-black">
       <div className="max-w-7xl mx-auto px-6">
         
         <motion.div 
@@ -49,10 +49,10 @@ export default function Testimonials() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-            Client Success <span className="text-[#F97316]">Stories</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-black">
+            Client Success <span className="text-[#0c6a22]">Stories</span>
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-lg text-gray-600">
             Real results for real businesses. See how we drive e-commerce growth.
           </p>
         </motion.div>
@@ -71,27 +71,27 @@ export default function Testimonials() {
               className="
                 group
                 relative
-                bg-white/5
-                border border-white/5
-                backdrop-blur-lg
+                bg-gray-50
+                border border-gray-200
                 rounded-4xl
                 p-8
-                hover:bg-white/10
-                hover:border-[#F97316]/30
+                hover:bg-white
+                hover:border-[#0c6a22]/30
+                hover:shadow-xl
                 transition-all
                 duration-500
               "
             >
-              <div className="flex gap-1 text-[#F97316] text-lg mb-6">
+              <div className="flex gap-1 text-[#0c6a22] text-lg mb-6">
                 ★★★★★
               </div>
 
-              <p className="text-gray-300 leading-relaxed text-[17px] italic mb-8 relative z-10">
+              <p className="text-gray-700 leading-relaxed text-[17px] italic mb-8 relative z-10">
                 &quot;{item.review}&quot;
               </p>
 
-              <div className="border-t border-white/10 pt-6 mt-auto">
-                <h4 className="text-lg font-bold text-white">
+              <div className="border-t border-gray-200 pt-6 mt-auto">
+                <h4 className="text-lg font-bold text-black">
                   {item.name}
                 </h4>
               </div>

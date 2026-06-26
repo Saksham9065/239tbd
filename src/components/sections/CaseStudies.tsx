@@ -29,10 +29,11 @@ const projects = [
 
 export default function CaseStudies() {
   return (
-    <section className="bg-[#050505] py-32 relative overflow-hidden">
+    <section className="bg-white py-32 relative overflow-hidden">
       {/* Background Noise Overlay */}
       <div 
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay noise-overlay"
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply"
+        style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -43,10 +44,10 @@ export default function CaseStudies() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black tracking-tighter text-white leading-[1.05]"
+            className="text-5xl md:text-6xl font-black tracking-tighter text-black leading-[1.05]"
           >
             Growth Stories <br /> 
-            <span className="text-[#F97316]">That Matter.</span>
+            <span className="text-[#0c6a22]">That Matter.</span>
           </motion.h2>
         </div>
 
@@ -63,18 +64,19 @@ export default function CaseStudies() {
                   group
                   flex flex-col
                   h-full
-                  bg-white/3
-                  border border-white/5
-                  hover:border-[#F97316]/30
+                  bg-gray-50
+                  border border-gray-200
+                  hover:border-[#0c6a22]/30
                   p-10
                   rounded-4xl
                   transition-all
                   duration-500
-                  hover:bg-white/6
+                  hover:bg-white
+                  hover:shadow-xl
                 "
               >
                 {/* Business Impact Number */}
-                <div className="text-[#F97316] font-black text-5xl md:text-6xl tracking-tighter">
+                <div className="text-[#0c6a22] font-black text-5xl md:text-6xl tracking-tighter">
                   {project.result}
                 </div>
                 <div className="text-gray-500 text-sm font-bold uppercase tracking-[0.2em] mt-1 mb-6">
@@ -82,15 +84,15 @@ export default function CaseStudies() {
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="text-2xl font-bold text-white leading-tight mb-4">
+                <h3 className="text-2xl font-bold text-black leading-tight mb-4">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 font-light text-lg leading-relaxed mt-auto mb-8">
+                <p className="text-gray-600 font-light text-lg leading-relaxed mt-auto mb-8">
                   {project.description}
                 </p>
 
                 {/* Decorative Arrow */}
-                <div className="text-[#F97316] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-sm uppercase tracking-widest">
+                <div className="text-[#0c6a22] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-sm uppercase tracking-widest">
                   View Case Study →
                 </div>
               </motion.div>

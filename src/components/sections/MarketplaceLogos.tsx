@@ -13,19 +13,19 @@ export default function MarketplaceLogos() {
   ];
 
   return (
-    <section className="py-24 bg-[#050505] relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+    <section className="py-24 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-left mb-20">
-          <motion.h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white leading-[1.05]">
-            Trusted <span className="text-[#F97316]">Marketplace</span> <br />
+          <motion.h2 className="text-5xl md:text-6xl font-black tracking-tighter text-black leading-[1.05]">
+            Trusted <span className="text-[#0c6a22]">Marketplace</span> <br />
             Partners.
           </motion.h2>
           
-          <motion.p className="mt-8 text-xl text-gray-400 font-light leading-relaxed max-w-2xl border-l-2 border-[#F97316] pl-6">
+          <motion.p className="mt-8 text-xl text-gray-600 font-light leading-relaxed max-w-2xl border-l-2 border-[#0c6a22] pl-6">
             Helping brands dominate leading marketplaces and build sustainable 
             E-commerce growth across every digital channel.
           </motion.p>
@@ -47,13 +47,13 @@ export default function MarketplaceLogos() {
               className="block"
             >
               <motion.div
-                whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(0, 0, 0, 0.03)" }}
                 className="
                   flex items-center justify-center 
-                  bg-white/3 border border-white/5 
+                  bg-gray-50 border border-gray-200 
                   rounded-2xl p-6 h-32
                   transition-all duration-500 
-                  hover:border-[#F97316]/30
+                  hover:border-[#0c6a22]/30
                   opacity-70 hover:opacity-100
                   cursor-pointer
                 "

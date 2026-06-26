@@ -14,8 +14,12 @@ const projects = [
 
 export default function CaseStudies() {
   return (
-    <main className="min-h-screen pt-40 pb-24 bg-[#050505] relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay noise-overlay" />
+    <main className="min-h-screen pt-40 pb-24 bg-white relative overflow-hidden">
+      {/* Background Noise Overlay adjusted for white background */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" 
+        style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} 
+      />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
@@ -24,10 +28,10 @@ export default function CaseStudies() {
           transition={{ duration: 0.8 }}
           className="mb-20"
         >
-          <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter">
+          <h1 className="text-6xl md:text-8xl font-black text-black tracking-tighter">
             Case Studies
           </h1>
-          <p className="mt-6 text-xl md:text-2xl text-gray-400 font-light max-w-2xl">
+          <p className="mt-6 text-xl md:text-2xl text-gray-600 font-light max-w-2xl">
             Real results for real businesses. See how we drive e-commerce growth.
           </p>
         </motion.div>
@@ -40,19 +44,19 @@ export default function CaseStudies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white/3 border border-white/5 p-10 rounded-4xl hover:border-[#F97316]/30 transition-all duration-500 hover:bg-white/6 h-full flex flex-col"
+                className="group bg-gray-50 border border-gray-200 p-10 rounded-4xl hover:border-[#0c6a22]/30 transition-all duration-500 hover:bg-gray-100 h-full flex flex-col"
               >
-                <div className="text-[#F97316] font-black text-5xl tracking-tighter mb-2">
+                <div className="text-[#0c6a22] font-black text-5xl tracking-tighter mb-2">
                   {project.result}
                 </div>
                 <div className="text-gray-500 text-xs font-bold uppercase tracking-[0.2em] mb-6">
                   {project.label}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
-                <p className="text-gray-400 font-light leading-relaxed mb-8 grow">
+                <h3 className="text-2xl font-bold text-black mb-4">{project.title}</h3>
+                <p className="text-gray-600 font-light leading-relaxed mb-8 grow">
                   {project.description}
                 </p>
-                <div className="text-[#F97316] font-bold text-sm uppercase tracking-widest group-hover:underline">
+                <div className="text-[#0c6a22] font-bold text-sm uppercase tracking-widest group-hover:underline">
                   View Details →
                 </div>
               </motion.div>

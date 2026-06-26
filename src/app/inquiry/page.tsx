@@ -53,27 +53,27 @@ export default function Inquiry() {
       } else {
         setStatus(result.error || "Failed to send message.");
       }
-    } catch { // Removed unused 'error' parameter to clear linting warning
+    } catch {
       setStatus("Failed to send message.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const inputStyles = "w-full bg-[#1A1F26] border border-white/10 py-3 px-4 rounded-lg text-white placeholder-gray-500 focus:border-[#F97316] focus:ring-1 focus:ring-[#F97316] outline-none";
-  const labelStyles = "text-xs font-bold text-[#F97316] uppercase tracking-[0.2em] mb-2 block";
+  const inputStyles = "w-full bg-white border border-gray-200 py-3 px-4 rounded-lg text-black placeholder-gray-400 focus:border-[#0c6a22] focus:ring-1 focus:ring-[#0c6a22] outline-none transition-all";
+  const labelStyles = "text-xs font-bold text-[#0c6a22] uppercase tracking-[0.2em] mb-2 block";
 
   return (
-    <main className="min-h-screen bg-[#050505] pt-20 pb-24">
+    <main className="min-h-screen bg-white pt-20 pb-24">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
         
         {/* Left Side: Branding */}
         <div className="sticky top-20">
-          <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none mb-8">
+          <h1 className="text-6xl md:text-8xl font-black text-black tracking-tighter leading-none mb-8">
             Let&apos;s <br />
-            <span className="text-[#F97316]">Scale.</span>
+            <span className="text-[#0c6a22]">Scale.</span>
           </h1>
-          <p className="text-gray-400 text-xl font-light leading-relaxed max-w-md">
+          <p className="text-gray-600 text-xl font-light leading-relaxed max-w-md">
             Your brand deserves a strategy that actually moves the needle.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function Inquiry() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           onSubmit={handleSubmit}
-          className="bg-[#0F1218] p-8 md:p-10 rounded-4xl border border-white/5 shadow-2xl"
+          className="bg-gray-50 p-8 md:p-10 rounded-4xl border border-gray-200 shadow-xl"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div>
@@ -101,10 +101,10 @@ export default function Inquiry() {
             <label className={labelStyles}>Services Interested In</label>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {services.map((service) => (
-                <label key={service} className="flex items-center p-3 border border-white/10 rounded-lg hover:border-[#F97316] transition-all cursor-pointer text-xs text-gray-400">
+                <label key={service} className="flex items-center p-3 border border-gray-200 bg-white rounded-lg hover:border-[#0c6a22] transition-all cursor-pointer text-xs text-gray-700">
                   <input 
                     type="checkbox" 
-                    className="mr-3 w-4 h-4 accent-[#F97316]" 
+                    className="mr-3 w-4 h-4 accent-[#0c6a22]" 
                     onChange={() => handleServiceChange(service)}
                     checked={selectedServices.includes(service)}
                   />
@@ -122,7 +122,7 @@ export default function Inquiry() {
           <button 
             type="submit" 
             disabled={isLoading}
-            className="w-full bg-[#F97316] text-white font-bold py-5 rounded-lg hover:bg-orange-600 transition-all disabled:opacity-50"
+            className="w-full bg-[#0c6a22] text-white font-bold py-5 rounded-lg hover:bg-[#0a581c] transition-all disabled:opacity-50"
           >
             {isLoading ? "Submitting..." : status || "Submit Inquiry"}
           </button>

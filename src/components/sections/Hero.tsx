@@ -34,7 +34,7 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const bgTextX = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
 
-  // --- ANIMATION VARIANTS (Typed for Strict Build) ---
+  // --- ANIMATION VARIANTS ---
   const maskReveal: Variants = {
     hidden: { y: "120%" },
     visible: { 
@@ -59,18 +59,19 @@ export default function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden bg-[#050505] flex flex-col items-center justify-center cursor-default"
+      className="relative min-h-screen overflow-hidden bg-white flex flex-col items-center justify-center cursor-default"
     >
+      {/* Ambient Green Glow */}
       <motion.div
         style={{
           left: smoothMouseX,
           top: smoothMouseY,
         }}
-        className="fixed w-150 h-150 rounded-full bg-[#F97316]/25 blur-[120px] pointer-events-none z-0"
+        className="fixed w-150 h-150 rounded-full bg-[#0c6a22]/10 blur-[120px] pointer-events-none z-0"
       />
 
       <div 
-        className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none mix-blend-overlay"
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply"
         style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
       />
 
@@ -78,9 +79,9 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none select-none overflow-hidden">
         <motion.div 
           style={{ x: bgTextX }}
-          className="whitespace-nowrap text-[8rem] sm:text-[12rem] md:text-[16rem] font-black uppercase tracking-tighter opacity-10"
+          className="whitespace-nowrap text-[8rem] sm:text-[12rem] md:text-[16rem] font-black uppercase tracking-tighter opacity-[0.03]"
         >
-          <span style={{ WebkitTextStroke: "2px rgba(255,255,255,0.7)", color: "transparent" }}>
+          <span style={{ WebkitTextStroke: "2px #0c6a22", color: "transparent" }}>
             MARKETPLACES
           </span>
         </motion.div>
@@ -99,7 +100,7 @@ export default function Hero() {
           <div className="overflow-hidden pb-4">
             <motion.h1 
               variants={maskReveal}
-              className="text-[6rem] sm:text-[10rem] md:text-[14rem] font-black text-white tracking-tighter leading-none drop-shadow-2xl"
+              className="text-[6rem] sm:text-[10rem] md:text-[14rem] font-black text-black tracking-tighter leading-none"
             >
               239
             </motion.h1>
@@ -108,7 +109,7 @@ export default function Hero() {
           <div className="overflow-hidden mb-8">
             <motion.h2 
               variants={maskReveal}
-              className="text-3xl sm:text-5xl md:text-7xl font-bold text-[#F97316] tracking-tight drop-shadow-lg"
+              className="text-3xl sm:text-5xl md:text-7xl font-bold text-[#0c6a22] tracking-tight"
             >
               Marketplaces.
             </motion.h2>
@@ -116,17 +117,17 @@ export default function Hero() {
 
           <motion.p 
             variants={fadeUp}
-            className="mt-6 text-xl md:text-3xl text-gray-200 font-medium max-w-3xl leading-relaxed"
+            className="mt-6 text-xl md:text-3xl text-gray-600 font-medium max-w-3xl leading-relaxed"
           >
-            We blend technology, strategy, and insight to convert fleeting attention into <span className="text-white font-bold">lasting E-commerce growth.</span>
+            We blend technology, strategy, and insight to convert fleeting attention into <span className="text-black font-bold">lasting E-commerce growth.</span>
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-12">
             <a
               href="/inquiry"
-              className="group relative inline-flex items-center justify-center bg-white text-black px-10 py-5 text-lg md:text-xl font-bold rounded-full overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(249,115,22,0.5)]"
+              className="group relative inline-flex items-center justify-center bg-black text-white px-10 py-5 text-lg md:text-xl font-bold rounded-full overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(12,106,34,0.3)]"
             >
-              <div className="absolute inset-0 w-full h-full bg-[#F97316] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1]" />
+              <div className="absolute inset-0 w-full h-full bg-[#0c6a22] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1]" />
               
               <span className="relative z-10 flex items-center group-hover:text-white transition-colors duration-300">
                 Grow with us

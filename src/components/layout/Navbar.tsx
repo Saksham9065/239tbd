@@ -48,7 +48,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-3xl font-black text-[#0c6a22] leading-none">239.</span>
+          <span className="text-3xl font-black text-[#0c6a22] leading-none">239</span>
           <div className="hidden md:flex flex-col border-l border-[#0c6a22]/30 pl-2">
             <span className="text-[8px] uppercase tracking-widest text-black font-bold">The Business</span>
             <span className="text-[8px] uppercase tracking-widest text-black font-bold">Developer LLP</span>
@@ -56,18 +56,21 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
-          {links.map((link) => (
-            <Link 
-              key={link.href} 
-              href={link.href} 
-              className={`relative py-1 text-sm font-semibold transition-colors duration-300 ${
-                pathname === link.href ? "text-[#0c6a22]" : "text-gray-600 hover:text-[#0c6a22]"
-              }`}
-            >
-              {link.name}
-              {pathname === link.href && <motion.div layoutId="nav" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#0c6a22]" />}
-            </Link>
-          ))}
+          <div className="flex items-center gap-2 bg-gray-50/80 backdrop-blur-sm px-6 py-3 rounded-full border border-gray-200">
+            {links.map((link) => (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
+                  pathname === link.href 
+                    ? "bg-[#0c6a22] text-white" 
+                    : "text-gray-600 hover:text-[#0c6a22] hover:bg-white"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
         </nav>
 
         <div className="flex items-center gap-4 h-10">

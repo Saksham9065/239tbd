@@ -8,16 +8,20 @@
 
   body {
     /* Updated for Light Mode */
-    @apply bg-white text-black antialiased;
+    background-color: white;
+    color: black;
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
     font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Changed selection color to match your new green brand accent */
   ::selection {
-    @apply bg-[#0c6a22] text-white;
+    background-color: #0c6a22;
+    color: white;
   }
 }
 
@@ -31,6 +35,11 @@
   /* Utility for the "Grainy" effect - updated to mix-blend-multiply for white background */
   .noise-overlay {
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    @apply absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.02;
+    pointer-events: none;
+    mix-blend-mode: multiply;
   }
 }

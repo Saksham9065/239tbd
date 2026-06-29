@@ -2,21 +2,28 @@
 
 import Link from "next/link";
 
+const services = [
+  { name: "Marketplace Management", slug: "marketplace-management" },
+  { name: "Marketplace Advertising", slug: "marketplace-advertising" },
+  { name: "SEO & Listing Optimization", slug: "seo-optimization" },
+  { name: "Warehousing & Fulfillment", slug: "warehousing-fulfillment" },
+  { name: "E-Commerce Development", slug: "ecommerce-development" },
+  { name: "Analytics & Growth Strategy", slug: "analytics-strategy" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 relative overflow-hidden">
-      {/* Background Noise Overlay (Optional: reduced opacity to be subtle on white) */}
       <div 
         className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply"
         style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-        <div className="grid md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
+        <div className="grid md:grid-cols-4 gap-8">
 
-          {/* Column 1: About Us */}
           <div>
-            <h3 className="font-bold text-black mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-bold text-black mb-4 uppercase tracking-wider text-xs">
               About Us
             </h3>
             <p className="text-gray-600 leading-relaxed font-light text-sm">
@@ -24,48 +31,49 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Services */}
           <div>
-            <h3 className="font-bold text-black mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-bold text-black mb-4 uppercase tracking-wider text-xs">
               Services
             </h3>
-            <div className="flex flex-col gap-3 text-sm text-gray-600">
-              <Link href="/services" className="hover:text-green-600 transition-colors">E-commerce Management</Link>
-              <Link href="/services" className="hover:text-green-600 transition-colors">Digital Marketing</Link>
-              <Link href="/services" className="hover:text-green-600 transition-colors">Web Development</Link>
-              <Link href="/services" className="hover:text-green-600 transition-colors">App Development</Link>
+            <div className="flex flex-col gap-2 text-sm text-gray-600">
+              {services.map((service) => (
+                <Link 
+                  key={service.slug} 
+                  href={`/services/${service.slug}`} 
+                  className="hover:text-[#0c6a22] transition-colors"
+                >
+                  {service.name}
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Column 3: Quick Links */}
           <div>
-            <h3 className="font-bold text-black mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-bold text-black mb-4 uppercase tracking-wider text-xs">
               Quick Links
             </h3>
-            <div className="flex flex-col gap-3 text-sm text-gray-600">
-              <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
-              <Link href="/about" className="hover:text-green-600 transition-colors">About Us</Link>
-              <Link href="/services" className="hover:text-green-600 transition-colors">Services</Link>
-              <Link href="/inquiry" className="hover:text-green-600 transition-colors">Inquiry</Link>
-              <Link href="/contact" className="hover:text-green-600 transition-colors">Contact</Link>
+            <div className="flex flex-col gap-2 text-sm text-gray-600">
+              <Link href="/" className="hover:text-[#0c6a22] transition-colors">Home</Link>
+              <Link href="/about" className="hover:text-[#0c6a22] transition-colors">About Us</Link>
+              <Link href="/services" className="hover:text-[#0c6a22] transition-colors">Services</Link>
+              <Link href="/inquiry" className="hover:text-[#0c6a22] transition-colors">Inquiry</Link>
+              <Link href="/contact" className="hover:text-[#0c6a22] transition-colors">Contact</Link>
             </div>
           </div>
 
-          {/* Column 4: Get in Touch & Registered Office */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             <div>
-              <h3 className="font-bold text-black mb-4 uppercase tracking-wider text-sm">
+              <h3 className="font-bold text-black mb-3 uppercase tracking-wider text-xs">
                 Get in Touch
               </h3>
               <div className="text-sm text-gray-600 flex flex-col gap-1">
-                <p>hello@239commerce.com</p>
+                <p>hello@239tbd.com</p>
                 <p>+91 98765 43210</p>
-                <p>India</p>
               </div>
             </div>
             
             <div>
-              <h3 className="font-bold text-black mb-4 uppercase tracking-wider text-sm">
+              <h3 className="font-bold text-black mb-3 uppercase tracking-wider text-xs">
                 Registered Office
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
@@ -76,17 +84,16 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-sm text-gray-500 font-light">
-            © 2026 239 Commerce. All rights reserved.
+        <div className="mt-16 pt-6 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-500 font-light">
+            © 2026 239 TBD. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="text-sm text-gray-500 hover:text-black transition-colors">
+            <Link href="/privacy-policy" className="text-xs text-gray-500 hover:text-black transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-sm text-gray-500 hover:text-black transition-colors">
+            <Link href="/terms" className="text-xs text-gray-500 hover:text-black transition-colors">
               Terms of Service
             </Link>
           </div>

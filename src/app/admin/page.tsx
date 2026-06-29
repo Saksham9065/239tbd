@@ -1,8 +1,7 @@
 import Inquiry from "@/models/Inquiry";
 import { connectDB } from "@/lib/mongodb";
-import DeleteButton from "@/components/DeleteButton"; 
+import InquiryCard from "@/components/InquiryCard";
 
-// This ensures the page is not pre-rendered at build time
 export const dynamic = 'force-dynamic';
 
 export default async function AdminInquiries() {
@@ -10,8 +9,13 @@ export default async function AdminInquiries() {
   const inquiries = await Inquiry.find().sort({ createdAt: -1 });
 
   return (
-    <main className="min-h-screen bg-white p-6 md:p-12 text-black">
-      <div className="max-w-6xl mx-auto">
+    <main className="min-h-screen bg-white p-6 md:p-12 text-black relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+      <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
+        <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #0c6a22 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      </div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
         <header className="flex justify-between items-center mb-12">
           <h1 className="text-4xl font-black tracking-tighter text-black">
             Lead <span className="text-[#0c6a22]">Inbox</span>
@@ -27,42 +31,8 @@ export default async function AdminInquiries() {
               <p className="text-gray-500">No inquiries found in the database.</p>
             </div>
           ) : (
-            inquiries.map((item) => (
-              <div 
-                key={item._id.toString()} 
-                className="bg-gray-50 p-8 rounded-3xl border border-gray-200 hover:border-[#0c6a22]/20 transition-all"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h2 className="text-2xl font-bold text-black">{item.name}</h2>
-                    <a href={`mailto:${item.email}`} className="text-[#0c6a22] hover:underline text-sm">
-                      {item.email}
-                    </a>
-                  </div>
-                  <span className="text-[10px] uppercase tracking-widest text-gray-500 bg-gray-200 px-3 py-1 rounded-full">
-                    {new Date(item.createdAt).toLocaleDateString()}
-                  </span>
-                </div>
-
-                <p className="text-gray-700 leading-relaxed mb-6 bg-white p-4 rounded-xl border border-gray-100">
-                  {item.message}
-                </p>
-
-                <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
-                  <div className="flex gap-2 flex-wrap">
-                    {item.services?.map((s: string) => (
-                      <span 
-                        key={s} 
-                        className="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-xs border border-gray-200"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <DeleteButton id={item._id.toString()} />
-                </div>
-              </div>
+            inquiries.map((item, index) => (
+              <InquiryCard key={item._id.toString()} item={item} index={index} />
             ))
           )}
         </div>

@@ -4,7 +4,8 @@ import { Schema, model, models, Document } from 'mongoose';
 export interface IInquiry extends Document {
   name: string;
   email: string;
-  services: string[];
+  phone?: string;
+  services?: string[];
   message: string;
   createdAt: Date;
 }
@@ -22,10 +23,15 @@ const InquirySchema = new Schema<IInquiry>({
     lowercase: true,
     trim: true 
   },
-  services: { 
-    type: [String], 
-    default: [] 
+phone: { 
+    type: String, 
+    required: [true, 'Mobile number is required'],
+    trim: true 
   },
+  services: [{ 
+    type: String, 
+    trim: true 
+  }],
   message: { 
     type: String, 
     required: [true, 'Message is required'],

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function AmazonCaseStudy() {
   const stats = [
@@ -10,14 +10,24 @@ export default function AmazonCaseStudy() {
     { label: "AD SPEND EFFICIENCY", value: "2.2x" }
   ];
 
+  const statVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, delay: 0.2 + i * 0.1 },
+    }),
+  };
+
   return (
     <main className="min-h-screen bg-white pt-32 pb-24 text-black">
       <div className="max-w-4xl mx-auto px-6">
         
         {/* Hero Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="mb-16"
         >
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9] text-black">
@@ -30,31 +40,39 @@ export default function AmazonCaseStudy() {
           </p>
         </motion.div>
 
-        {/* Separator Line */}
-        <div className="w-full border-b border-gray-200 mb-12"></div>
-
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+        <motion.div
+          variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.4 } } }}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 border-y border-gray-200 py-12"
+        >
           {stats.map((stat, i) => (
-            <div key={i}>
+            <motion.div key={i} custom={i} variants={statVariants} initial="hidden" animate="visible">
               <div className="text-[#0c6a22] text-3xl md:text-4xl font-bold mb-2">
                 {stat.value}
               </div>
               <div className="text-gray-500 text-xs font-bold tracking-[0.2em]">
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* The Strategy Section */}
-        <div className="space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6"
+        >
           <h2 className="text-2xl font-bold text-black">The Strategy</h2>
           <p className="text-gray-600 leading-relaxed text-lg">
             We implemented a three-phase approach focusing on algorithmic search optimization, 
             strategic Sponsored Product bidding, and automated inventory replenishment.
           </p>
-        </div>
+        </motion.div>
       </div>
     </main>
   );

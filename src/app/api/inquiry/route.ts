@@ -7,7 +7,8 @@ import { z } from "zod";
 const inquirySchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
-  services: z.array(z.string()),
+  phone: z.string().optional(),
+  service: z.string().optional(),
   message: z.string().min(10),
 });
 
@@ -28,8 +29,7 @@ export async function POST(req: Request) {
     await connectDB();
 
     // 3. Save to MongoDB
-    // Added underscore prefix to satisfy ESLint "unused variable" warning
-    const _newInquiry = await Inquiry.create(body);
+    await Inquiry.create(body);
 
     // 4. Send HTML Email (Initialized here to avoid build-time errors)
     try {
@@ -45,7 +45,8 @@ export async function POST(req: Request) {
               <h2 style="color: #F97316;">New Project Inquiry</h2>
               <p><strong>Name:</strong> ${body.name}</p>
               <p><strong>Email:</strong> ${body.email}</p>
-              <p><strong>Services Interested In:</strong> ${body.services.join(", ") || "None"}</p>
+              <p><strong>Mobile Number:</strong> ${body.phone || "Not provided"}</p>
+              <p><strong>Services Interested In:</strong> ${body.service || "None"}</p>
               <p><strong>Message:</strong></p>
               <p style="background: #f4f4f4; padding: 15px; border-radius: 8px;">${body.message}</p>
             </div>

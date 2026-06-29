@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 
 const projects = [
@@ -12,57 +12,119 @@ const projects = [
   { title: "Conversion Uplift", result: "3.5x", label: "Conversion Rate", description: "Redesigned product listing content and A+ pages to maximize consumer engagement and trust.", slug: "conversion-uplift" }
 ];
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }
+  },
+};
+
 export default function CaseStudies() {
   return (
-    <main className="min-h-screen pt-40 pb-24 bg-white relative overflow-hidden">
-      {/* Background Noise Overlay adjusted for white background */}
+    <main className="min-h-screen pt-32 pb-20 bg-white relative overflow-hidden">
       <div 
         className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" 
         style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} 
       />
+      
+      <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
+        <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #0c6a22 1px, transparent 0)', backgroundSize: '50px 50px' }} />
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-20"
+          className="mb-16"
         >
-          <h1 className="text-6xl md:text-8xl font-black text-black tracking-tighter">
+          <motion.span
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[#0c6a22] uppercase tracking-[0.2em] text-xs font-bold block mb-6 relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-2 before:h-2 before:bg-[#0c6a22] before:rounded-full"
+          >
+            Our Work
+          </motion.span>
+          
+          <h1 className="text-5xl md:text-7xl font-black text-black tracking-tighter leading-none">
             Case Studies
+            <motion.span 
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="block h-1 bg-[#0c6a22]/30 mt-2"
+            />
           </h1>
-          <p className="mt-6 text-xl md:text-2xl text-gray-600 font-light max-w-2xl">
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-6 text-xl md:text-2xl text-gray-600 font-light max-w-2xl"
+          >
             Real results for real businesses. See how we drive e-commerce growth.
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Link href={`/case-studies/${project.slug}`} key={project.slug}>
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {projects.map((project) => (
+            <Link href={`/case-studies/${project.slug}`} key={project.slug} className="h-full block">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-gray-50 border border-gray-200 p-10 rounded-4xl hover:border-[#0c6a22]/30 transition-all duration-500 hover:bg-gray-100 h-full flex flex-col"
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 25px 50px rgba(12, 106, 34, 0.15)" as const
+                }}
+                transition={{ duration: 0.3 }}
+                className="group relative bg-gray-50 border border-gray-200 p-8 rounded-4xl hover:border-[#0c6a22]/30 transition-all duration-500 h-full flex flex-col overflow-hidden"
               >
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 0.05 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute -top-20 -right-20 h-full w-40 rounded-full"
+                  style={{ background: 'radial-gradient(circle, #0c6a22, transparent)' }}
+                />
+
                 <div className="text-[#0c6a22] font-black text-5xl tracking-tighter mb-2">
                   {project.result}
                 </div>
-                <div className="text-gray-500 text-xs font-bold uppercase tracking-[0.2em] mb-6">
+                <div className="text-gray-500 text-xs font-bold uppercase tracking-[0.2em] mb-6 relative pl-3 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-[#0c6a22] before:rounded-full">
                   {project.label}
                 </div>
-                <h3 className="text-2xl font-bold text-black mb-4">{project.title}</h3>
-                <p className="text-gray-600 font-light leading-relaxed mb-8 grow">
+                
+                <h3 className="text-2xl font-bold text-black mb-4 group-hover:text-[#0c6a22] transition-colors duration-300">
+                  {project.title}
+                </h3>
+                
+                <p className="text-gray-600 font-light leading-relaxed mb-6 grow">
                   {project.description}
                 </p>
-                <div className="text-[#0c6a22] font-bold text-sm uppercase tracking-widest group-hover:underline">
+                
+                <div className="text-[#0c6a22] font-bold text-sm uppercase tracking-widest group-hover:underline flex items-center gap-2">
                   View Details →
                 </div>
               </motion.div>
             </Link>
           ))}
-        </div>
+        </motion.div>
       </div>
     </main>
   );

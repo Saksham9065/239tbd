@@ -59,9 +59,9 @@ export default function Hero() {
         style={{ y: contentY, opacity: contentOpacity }} 
         className="relative z-10 text-center px-6"
       >
-        <motion.h1 className="text-[14rem] font-black tracking-tighter leading-none" style={{ WebkitTextStroke: "2px #0c6a22", color: "transparent" }}>239</motion.h1>
-        <motion.h2 className="text-7xl font-bold text-black mb-4">Marketplaces</motion.h2>
-        <motion.p className="mt-6 text-3xl text-gray-600 max-w-3xl mx-auto mb-12">
+        <motion.h1 className="text-[5rem] sm:text-[8rem] md:text-[14rem] font-black tracking-tighter leading-none" style={{ WebkitTextStroke: "2px #0c6a22", color: "transparent" }}>239</motion.h1>
+        <motion.h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-black mb-4">Marketplaces</motion.h2>
+        <motion.p className="mt-6 text-lg sm:text-xl md:text-3xl text-gray-600 max-w-3xl mx-auto mb-12">
           We blend technology, strategy, and insight to convert fleeting attention into lasting E-commerce growth.
         </motion.p>
         <div className="flex justify-center w-full">
@@ -69,7 +69,7 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 text-xl font-bold text-white bg-black border-2 border-black rounded-full hover:bg-[#0c6a22] hover:border-[#0c6a22] transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer"
+              className="px-6 py-3 text-base sm:text-lg md:px-10 md:py-4 md:text-xl font-bold text-white bg-black border-2 border-black rounded-full hover:bg-[#0c6a22] hover:border-[#0c6a22] transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer"
             >
               Grow with us
               <span className="text-2xl">→</span>

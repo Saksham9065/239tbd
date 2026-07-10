@@ -16,8 +16,8 @@ export default function AdminNav() {
   return (
     <aside className="w-64 shrink-0 bg-gray-900 text-white min-h-[calc(100vh-5rem)] p-6 flex flex-col overflow-x-hidden">
       <div className="mb-10">
-        <p className="text-[#4ade80] uppercase tracking-[0.2em] text-xs font-bold break-words">239 Admin</p>
-        <h2 className="text-xl font-black mt-1 break-words">Control Panel</h2>
+        <p className="text-[#4ade80] uppercase tracking-[0.2em] text-xs font-bold wrap-break-word">239 Admin</p>
+        <h2 className="text-xl font-black mt-1 wrap-break-word">Control Panel</h2>
       </div>
 
       <nav className="flex flex-col gap-2 flex-1">

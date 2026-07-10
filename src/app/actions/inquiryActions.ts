@@ -3,12 +3,13 @@
 import { connectDB } from "@/lib/mongodb";
 import Inquiry from "@/models/Inquiry";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 // Helper to verify if the user is actually logged in as admin
 async function isAdmin() {
-  const cookieStore = await cookies();
-  return cookieStore.get("admin_token")?.value === "true";
+  const session = await getServerSession(authOptions);
+  return session?.user?.role === "admin";
 }
 
 export async function deleteInquiry(id: string) {
@@ -19,8 +20,8 @@ export async function deleteInquiry(id: string) {
   await connectDB();
   await Inquiry.findByIdAndDelete(id);
   
-  // Refresh the dashboard data
   revalidatePath("/admin");
+  revalidatePath("/admin/leads");
   return { success: true };
 }
 
@@ -32,7 +33,7 @@ export async function toggleReadStatus(id: string, currentStatus: boolean) {
   await connectDB();
   await Inquiry.findByIdAndUpdate(id, { isRead: !currentStatus });
   
-  // Refresh the dashboard data
   revalidatePath("/admin");
+  revalidatePath("/admin/leads");
   return { success: true };
 }

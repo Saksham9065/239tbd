@@ -7,6 +7,7 @@ export interface IInquiry extends Document {
   phone?: string;
   services?: string[];
   message: string;
+  isRead: boolean;
   createdAt: Date;
 }
 
@@ -36,6 +37,10 @@ phone: {
     type: String, 
     required: [true, 'Message is required'],
     trim: true 
+  },
+  isRead: {
+    type: Boolean,
+    default: false
   },
   createdAt: { 
     type: Date, 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
@@ -22,15 +22,23 @@ export default function LoginPage() {
       redirect: false,
     });
 
-    setLoading(false);
-
     if (result?.error) {
+      setLoading(false);
       toast.error("Invalid email or password");
-    } else {
-      toast.success("Successfully logged in!");
-      router.push("/admin");
-      router.refresh();
+      return;
     }
+
+    const session = await getSession();
+
+    if (session?.user?.role !== "admin") {
+      setLoading(false);
+      toast.error("Access denied. Admin privileges required.");
+      return;
+    }
+
+    toast.success("Successfully logged in!");
+    router.push("/admin");
+    router.refresh();
   };
 
   const inputStyles = "w-full p-4 bg-white rounded-xl border border-gray-200 text-black focus:border-[#0c6a22] focus:ring-1 focus:ring-[#0c6a22] outline-none transition-all";

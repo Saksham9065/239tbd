@@ -71,7 +71,7 @@ export default function TasksPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-black p-10">
+    <main className="min-h-screen bg-white text-black p-10 pt-28">
       <div className="max-w-xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

@@ -57,7 +57,7 @@ export default async function AdminDashboard() {
   ];
 
   return (
-    <div className="flex min-h-screen bg-white text-black">
+    <div className="flex min-h-screen bg-white text-black pt-20">
       <AdminNav />
       <main className="flex-1 p-6 md:p-12 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />

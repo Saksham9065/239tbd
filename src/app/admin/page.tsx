@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Inquiry from "@/models/Inquiry";
-import Task from "@/models/Task";
 import { connectDB } from "@/lib/mongodb";
 import InquiryCard from "@/components/InquiryCard";
 import AdminNav from "@/components/AdminNav";
@@ -27,16 +26,14 @@ export default async function AdminDashboard() {
 
   await connectDB();
 
-  const [inquiries, tasks] = await Promise.all([
+  const [inquiries] = await Promise.all([
     Inquiry.find().sort({ createdAt: -1 }),
-    Task.find().sort({ createdAt: -1 }),
   ]);
 
   const weekStart = startOfThisWeek();
   const totalLeads = inquiries.length;
   const unreadLeads = inquiries.filter((i) => !i.isRead).length;
   const weeklyLeads = inquiries.filter((i) => new Date(i.createdAt) >= weekStart).length;
-  const openTasks = tasks.filter((t) => !t.completed).length;
 
   const recent = inquiries.slice(0, 5).map((i) => ({
     id: i._id.toString(),
@@ -53,7 +50,6 @@ export default async function AdminDashboard() {
     { label: "Total Leads", value: totalLeads, accent: "text-[#0c6a22]" },
     { label: "New This Week", value: weeklyLeads, accent: "text-blue-600" },
     { label: "Unread", value: unreadLeads, accent: "text-amber-600" },
-    { label: "Open Tasks", value: openTasks, accent: "text-purple-600" },
   ];
 
   return (
@@ -100,35 +96,6 @@ export default async function AdminDashboard() {
                 ))}
               </div>
             )}
-          </section>
-
-          <section>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-black">Tasks</h2>
-              <Link href="/tasks" className="text-sm font-semibold text-[#0c6a22] hover:underline">
-                Manage →
-              </Link>
-            </div>
-            <div className="bg-gray-50 border border-gray-200 rounded-3xl p-6 divide-y divide-gray-200">
-              {tasks.length === 0 ? (
-                <p className="text-gray-500 py-4">No tasks yet.</p>
-              ) : (
-                tasks.slice(0, 6).map((t) => (
-                  <div key={t._id.toString()} className="flex items-center gap-3 py-3">
-                    <span
-                      className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                        t.completed ? "bg-[#0c6a22] border-[#0c6a22]" : "border-gray-400"
-                      }`}
-                    >
-                      {t.completed && <span className="text-white text-[10px]">✓</span>}
-                    </span>
-                    <span className={t.completed ? "text-gray-400 line-through" : "text-gray-800"}>
-                      {t.title}
-                    </span>
-                  </div>
-                ))
-              )}
-            </div>
           </section>
         </div>
       </main>

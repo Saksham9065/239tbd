@@ -90,10 +90,11 @@ export default function TasksPage() {
         >
           <motion.input
             whileFocus={{ scale: 1.02, borderColor: "#0c6a22" }}
-            className="flex-1 bg-gray-50 border border-gray-200 p-3 rounded-xl outline-none"
+            className="flex-1 border border-gray-200 p-3 rounded-xl outline-none"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Add a new task..."
+            style={{ backgroundColor: "#f9fafb", borderColor: "#e5e7eb" }}
           />
           <motion.button
             whileHover={{ scale: 1.05 }}

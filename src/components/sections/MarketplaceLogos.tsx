@@ -97,17 +97,18 @@ export default function MarketplaceLogos() {
                   backgroundColor: "rgba(12, 106, 34, 0.02)",
                   boxShadow: "0 10px 30px rgba(12, 106, 34, 0.15)",
                 }}
-                whileTap={{ scale: 0.95 }}
-                className="
-                  flex items-center justify-center 
-                  bg-gray-50 border border-gray-200 
-                  rounded-3xl p-6 h-32
-                  transition-all duration-500 
-                  hover:border-[#0c6a22]/50
-                  cursor-pointer
-                  relative
-                  overflow-hidden
-                "
+                 whileTap={{ scale: 0.95 }}
+                 className="
+                   flex items-center justify-center 
+                   border border-gray-200 
+                   rounded-3xl p-6 h-32
+                   transition-all duration-500 
+                   hover:border-[#0c6a22]/50
+                   cursor-pointer
+                   relative
+                   overflow-hidden
+                 "
+                 style={{ backgroundColor: "#f9fafb" }}
               >
                 <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500">
                   <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(12, 106, 34, 0.1) 0%, transparent 70%)' }} />

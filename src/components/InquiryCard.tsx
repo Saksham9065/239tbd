@@ -26,8 +26,8 @@ export default function InquiryCard({ item, index }: InquiryCardProps) {
   };
 
   const created = new Date(item.createdAt);
-  const dateLabel = created.toLocaleDateString();
-  const timeLabel = created.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  const dateLabel = created.toLocaleDateString("en-US");
+  const timeLabel = created.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
   const isUnread = item.isRead === false;
 
   return (
@@ -37,9 +37,8 @@ export default function InquiryCard({ item, index }: InquiryCardProps) {
       animate="visible"
       transition={{ duration: 0.6, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -4, borderColor: "rgba(12, 106, 34, 0.3)" }}
-      className={`bg-gray-50/80 backdrop-blur-sm p-8 rounded-4xl border shadow-lg hover:shadow-xl transition-all ${
-        isUnread ? "border-[#0c6a22]/40" : "border-gray-200"
-      }`}
+      className="bg-gray-50/80 backdrop-blur-sm p-8 rounded-4xl border shadow-lg hover:shadow-xl transition-all"
+      style={{ borderColor: isUnread ? "rgba(12, 106, 34, 0.4)" : "#e5e7eb" }}
     >
       <div className="flex justify-between items-start mb-4">
         <div>
@@ -79,7 +78,8 @@ export default function InquiryCard({ item, index }: InquiryCardProps) {
               <motion.span
                 key={s}
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(12, 106, 34, 0.1)" }}
-                className="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-xs border border-gray-200 transition-all"
+                className="text-gray-700 px-3 py-1 rounded-lg text-xs border border-gray-200 transition-all"
+                style={{ backgroundColor: "#f3f4f6" }}
               >
                 {s}
               </motion.span>

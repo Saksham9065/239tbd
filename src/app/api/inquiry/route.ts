@@ -9,6 +9,7 @@ const inquirySchema = z.object({
   email: z.string().email(),
   phone: z.string().optional(),
   service: z.string().optional(),
+  services: z.array(z.string()).optional(),
   message: z.string().min(10),
 });
 
@@ -29,7 +30,11 @@ export async function POST(req: Request) {
     await connectDB();
 
     // 3. Save to MongoDB
-    await Inquiry.create(body);
+    const { service, services, ...inquiryData } = body;
+    await Inquiry.create({
+      ...inquiryData,
+      services: services && services.length > 0 ? services : service ? [service] : [],
+    });
 
     // 4. Send HTML Email (Initialized here to avoid build-time errors)
     try {
